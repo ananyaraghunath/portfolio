@@ -18,6 +18,57 @@ body {
   color: var(--text-dark);
 }
 
+nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1rem 2rem;
+  background: linear-gradient(
+    to right,
+    var(--main-color),
+    var(--secondary-color)
+  );
+  color: white;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+}
+
+.nav-left {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.nav-left img {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.nav-left span {
+  font-weight: bold;
+  font-size: 1.2rem;
+  color: white;
+}
+
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+}
+
+.nav-links a {
+  color: white;
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.nav-links a:hover {
+  text-decoration: underline;
+}
+
 .toggle-sparkle {
   background: none;
   border: none;
@@ -543,27 +594,41 @@ footer {
   transform: scale(1.02);
 }
 
-.nav-links {
+nav {
   display: flex;
-  gap: 1rem;
+  justify-content: space-between;
   align-items: center;
+  padding: 1rem;
+  position: relative;
 }
 
-.nav-toggle {
+.menu-toggle {
   display: none;
   font-size: 1.8rem;
+  background: none;
+  border: none;
+  color: white;
   cursor: pointer;
+  z-index: 1001;
 }
 
-/* Responsive Styling */
+.nav-links {
+  display: flex;
+  gap: 1.5rem;
+}
+
 @media (max-width: 768px) {
+  .menu-toggle {
+    display: block;
+  }
+
   .nav-links {
     display: none;
-    flex-direction: column;
-    background-color: #111; /* or your nav bg color */
     position: absolute;
-    top: 60px; /* below nav */
-    right: 0;
+    top: 100%;
+    left: 0;
+    flex-direction: column;
+    background-color: #111;
     width: 100%;
     padding: 1rem;
     z-index: 1000;
@@ -573,12 +638,9 @@ footer {
     display: flex;
   }
 
-  .nav-toggle {
-    display: block;
-  }
-
-  nav {
-    justify-content: space-between;
-    align-items: center;
+  .nav-links a,
+  .nav-links button {
+    padding: 0.5rem 0;
+    text-align: left;
   }
 }

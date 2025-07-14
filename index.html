@@ -24,7 +24,7 @@
           <span>Ananya Raghunath</span>
         </div>
 
-        <div class="nav-toggle" id="nav-toggle">&#9776;</div>
+        <button class="menu-toggle" id="menu-toggle">&#9776;</button>
         <!-- Hamburger Icon -->
 
         <div class="nav-links" id="nav-links">
@@ -469,12 +469,12 @@
         }, 600);
       });
 
-      const toggleNav = document.getElementById("nav-toggle");
-      const navLinks = document.getElementById("nav-links");
-
-      toggleNav.addEventListener("click", () => {
-        navLinks.classList.toggle("show");
-      });
+      // Toggle mobile menu
+      document
+        .getElementById("menu-toggle")
+        .addEventListener("click", function () {
+          document.getElementById("nav-links").classList.toggle("show");
+        });
     </script>
   </body>
 </html>
