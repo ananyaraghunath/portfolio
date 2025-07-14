@@ -1,0 +1,468 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Ananya Raghunath | Portfolio</title>
+
+    <!-- AOS Library -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap"
+    />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+
+  <body>
+    <header>
+      <nav>
+        <div class="nav-left">
+          <img src="images/headshot.jpg" alt="Ananya" />
+          <span>Ananya Raghunath</span>
+        </div>
+        <div class="nav-links">
+          <a href="#about">About</a>
+          <a href="#skills">Skills</a>
+          <a href="#experience">Experience</a>
+          <a href="#projects">Projects</a>
+          <a href="#features">Features</a>
+          <button class="toggle-sparkle" id="toggle-sparkle">🌙</button>
+        </div>
+      </nav>
+    </header>
+
+    <section class="hero-intro" id="home">
+      <div class="hero-container">
+        <div class="hero-image" data-aos="fade-right">
+          <img src="images/ananya.JPEG" alt="Ananya Raghunath" />
+        </div>
+        <div class="hero-text" data-aos="fade-left">
+          <h1>Hi! I'm</h1>
+          <h2>Ananya Raghunath</h2>
+          <p>A software engineer, artist, and beauty-tech enthusiast.</p>
+          <div class="hero-buttons">
+            <a
+              href="https://github.com/ananyaraghunath"
+              target="_blank"
+              class="social-button"
+              >GitHub</a
+            >
+            <a
+              href="https://linkedin.com/in/ananya-raghunath"
+              target="_blank"
+              class="social-button"
+              >LinkedIn</a
+            >
+            <a
+              href="mailto: ananyaraghunath06@gmail.com"
+              target="_blank"
+              class="social-button"
+              >Email</a
+            >
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="about">
+      <h2>About Me</h2>
+      <div data-aos="zoom-in-up">
+        <p>
+          Hi, my name is Ananya! I’m an honors computer science student at New
+          Jersey Institute of Technology. I strive to blend creativity and code
+          to build meaningful tech—especially in the beauty and conservation
+          space. I'm interested in leveraging computing to create a difference.
+          In my free time, I enjoy experimenting with makeup, painting, creating
+          jewelry, and exploring new places. Feel free to connect with me!
+        </p>
+      </div>
+      <div class="about-gallery" data-aos="zoom-in-up">
+        <div class="photo-card">
+          <img src="images/HIRF.jpg" alt="Hackathon Presentation" />
+          <div class="overlay"></div>
+        </div>
+        <div class="photo-card">
+          <img src="images/makeup.jpg" alt="Beauty Products" />
+          <div class="overlay"></div>
+        </div>
+        <div class="photo-card">
+          <img src="images/Blend.jpg" alt="Team Collaboration" />
+          <div class="overlay"></div>
+        </div>
+        <div class="photo-card">
+          <img src="images/RTC.JPEG" alt="RTC Event" />
+          <div class="overlay"></div>
+        </div>
+        <!-- Repeat for other images -->
+      </div>
+    </section>
+
+    <section class="skills-section" id="skills">
+      <h2>Skills</h2>
+
+      <div class="skills-category" data-aos="fade-right">
+        <h3>Languages:</h3>
+      </div>
+
+      <ul class="skills-list" data-aos="zoom-in-up">
+        <li>Java</li>
+        <li>Python</li>
+        <li>C++</li>
+        <li>SQL (Postgres)</li>
+        <li>JavaScript</li>
+        <li>HTML/CSS</li>
+        <li>R</li>
+      </ul>
+
+      <div class="skills-category" data-aos="fade-right">
+        <h3>Certifications:</h3>
+      </div>
+      <ul class="skills-list" data-aos="zoom-in-up" data-aos-delay="100">
+        <li>Google Generative AI Fundamentals</li>
+      </ul>
+
+      <div class="skills-category" data-aos="fade-right">
+        <h3>Frameworks:</h3>
+      </div>
+      <ul class="skills-list" data-aos="zoom-in-up" data-aos-delay="200">
+        <li>React</li>
+        <li>Flask</li>
+        <li>PsychoPy</li>
+        <li>MATLAB</li>
+      </ul>
+
+      <div class="skills-category" data-aos="fade-right">
+        <h3>Developer Tools:</h3>
+      </div>
+      <ul class="skills-list" data-aos="zoom-in-up" data-aos-delay="300">
+        <li>Git</li>
+        <li>Postman</li>
+        <li>MySQL</li>
+        <li>X-Code</li>
+        <li>VS Code</li>
+        <li>SpringBoot</li>
+        <li>Eclipse</li>
+        <li>REST APIs</li>
+      </ul>
+
+      <div class="skills-category" data-aos="fade-right">
+        <h3>Design & Prototyping:</h3>
+      </div>
+      <ul class="skills-list" data-aos="zoom-in-up" data-aos-delay="400">
+        <li>Figma</li>
+      </ul>
+    </section>
+
+    <section id="experience">
+      <h2>Experience</h2>
+
+      <!-- PSEG -->
+      <div class="experience-entry" data-aos="fade-up">
+        <div class="logo-column">
+          <img src="images/pseg.png" alt="PSEG Logo" />
+          <div class="date">June 2025 – Present</div>
+        </div>
+        <div class="details">
+          <h3>
+            IT Disaster Recovery & Business Continuity Governance Intern –
+            <strong>Public Services Electric & Gas (PSEG)</strong>
+          </h3>
+          <ul>
+            <li>
+              Support the business continuity and disaster recovery initiatives
+              by assisting with plan documentation and testing.
+            </li>
+            <li>
+              Collaborate with cross-functional teams, stakeholders, project,
+              and support teams across IT.
+            </li>
+            <li>
+              Manage and plan tabletop exercises, including playbooks and
+              facilitation.
+            </li>
+          </ul>
+          <div class="badges">
+            <span>Microsoft Suite</span>
+            <span>Power BI</span>
+            <span>Power Automate</span>
+            <span>Power Apps</span>
+            <span>SharePoint</span>
+            <span>ServiceNow Sandbox</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- NJIT AI4SG -->
+      <div class="experience-entry" data-aos="fade-up" data-aos-delay="100">
+        <div class="logo-column">
+          <img src="images/njit.png" alt="NJIT Logo" />
+          <div class="date">September 2024 – Present</div>
+        </div>
+        <div class="details">
+          <h3>
+            Undergraduate Research Assistant – <strong>NJIT AI4SG Lab</strong>
+          </h3>
+          <ul>
+            <li>
+              Researching prompt alignment and harmful code generation in LLMs
+              (e.g. CodeQwen).
+            </li>
+            <li>
+              Running classifier training and evaluations on MBPP and
+              harmful/benign prompt benchmarks.
+            </li>
+            <li>
+              Exploring jailbreak signatures and decoding-level prompt filtering
+              methods.
+            </li>
+          </ul>
+          <div class="badges">
+            <span>Python</span>
+            <span>LLMs</span>
+            <span>Transformers</span>
+            <span>Hugging Face</span>
+            <span>MBPP</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- IndiaAsha -->
+      <div class="experience-entry" data-aos="fade-up" data-aos-delay="200">
+        <div class="logo-column">
+          <img src="images/indiaAsha.png" alt="IndiaAsha Logo" />
+          <div class="date">September 2024 – December 2024</div>
+        </div>
+        <div class="details">
+          <h3>Application Developer Intern – <strong>IndiaAsha.org</strong></h3>
+          <ul>
+            <li>
+              Engineered a calendaring tool translating Vedic dates to Gregorian
+              calendar using astronomical algorithms.
+            </li>
+            <li>
+              Collaborated on modernizing legacy systems for better
+              accessibility and functionality.
+            </li>
+          </ul>
+          <div class="badges">
+            <span>Java</span>
+            <span>Algorithms</span>
+            <span>Data Structures</span>
+            <span>UI/UX</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- CodeNinjas / JerseySTEM / RoboThink -->
+      <div class="experience-entry" data-aos="fade-up" data-aos-delay="300">
+        <div class="logo-column">
+          <img src="images/tutor.png" alt="Tutoring Logos" />
+          <div class="date">2022 – Present</div>
+        </div>
+        <div class="details">
+          <h3>
+            Instructor & Curriculum Developer –
+            <strong>CodeNinjas, JerseySTEM, RoboThink</strong>
+          </h3>
+          <ul>
+            <li>
+              Developed coding and robotics curricula for students grades 5–10.
+            </li>
+            <li>
+              Led a successful Girls in STEM program with high return
+              participation.
+            </li>
+            <li>
+              Fostered inclusive classrooms where students felt supported and
+              confident learning tech.
+            </li>
+          </ul>
+          <div class="badges">
+            <span>Python</span>
+            <span>Scratch</span>
+            <span>STEM Education</span>
+            <span>Robotics</span>
+            <span>JavaScript</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="projects">
+      <h2>Projects</h2>
+      <div class="project-card" data-aos="fade-up" data-aos-delay="100">
+        <div class="logo-column2">
+          <img src="images/HIRFR.png" alt="HIRF 2025" />
+        </div>
+        <h3>Defending Latent Space Jailbreaking In Large Language Models</h3>
+        <p>
+          Research project preventing harmful LLM code generations using
+          classifiers and prompt filtering strategies. Won 1st Place at the 2025
+          Albert Dorman Interdisciplinary Research Forum for presenting a method
+          to prevent latent space jailbreaking in Large Language Models and
+          secure cloud-based code generation.
+        </p>
+        <div class="badges">
+          <span>Python</span>
+          <span>Transformers</span>
+          <span>Large Language Models</span>
+          <span>Prompt Engineering</span>
+          <span>Classifier Training</span>
+          <span>Hugging Face</span>
+          <span>LLM Alignment</span>
+          <span>AI Safety</span>
+        </div>
+      </div>
+      <div class="project-card" data-aos="fade-up">
+        <div class="logo-column2">
+          <img src="images/BlenddHome.png" alt="Blendd 1" />
+          <img src="images/BlenddApp.png" alt="Blendd 2" />
+          <img src="images/BlenddPrice.png" alt="Blendd 3" />
+        </div>
+        <h3>Blend’d Beauty</h3>
+        <p>
+          Led as CTO and Won 1st Place at the 2024 Albert Dorman
+          Interdisciplinary Research Forum out of 50+ teams by creatively
+          developing a prototype website and chatbot application that delivered
+          personalized beauty recommendations based on user input.
+        </p>
+        <div class="badges">
+          <span>Python</span>
+          <span>Flask</span>
+          <span>HTML/CSS</span>
+          <span>JavaScript</span>
+          <span>OpenAI API</span>
+          <span>Google Firebase</span>
+        </div>
+      </div>
+      <div class="project-card" data-aos="fade-up" data-aos-delay="100">
+        <div class="logo-column2">
+          <img src="images/girlhacks.jpg" alt="Girl Hacks Competition Team" />
+        </div>
+        <h3>
+          <a
+            href="https://github.com/ananyaraghunath/girlhacks"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Connect Newark</a
+          >
+        </h3>
+        <p>
+          Developed a community engagement platform as measured by successful
+          deployment and positive usability feedback by designing backend
+          functionalities during the GirlHacks hackathon.
+        </p>
+        <div class="badges">
+          <span>Python</span>
+          <span>Flask</span>
+          <span>Rest APIs</span>
+          <span>SQL Alchemy Lite</span>
+        </div>
+      </div>
+      <div class="project-card" data-aos="fade-up" data-aos-delay="100">
+        <h3>
+          <a
+            href="https://github.com/ananyaraghunath/MCL-Small-Programming-Language"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Mini-C Like Language Development</a
+          >
+        </h3>
+        <p>
+          Built a lexer, parser, and interpreter for a Mini-C-like language as
+          measured by successful parsing and execution across rigorous test
+          cases by applying EBNF notations and formal language principles.
+          <br />Technologies utilized: C++, EBNF, Lexical Analysis
+        </p>
+        <div class="badges">
+          <span>C++</span>
+          <span>EBNF</span>
+          <span>Lexical Analysis</span>
+        </div>
+      </div>
+    </section>
+
+    <section id="features">
+      <h2>Featured In</h2>
+      <div class="features-grid">
+        <a
+          href="https://news.njit.edu/njits-honors-college-scholars-present-research-interdisciplinary-forum"
+          target="_blank"
+          class="feature-card"
+        >
+          <h3>NJIT Honors Research Winners Announced</h3>
+          <p>
+            Blend’d Beauty project wins 1st place at Interdisciplinary Forum
+            2024.
+          </p>
+        </a>
+
+        <a
+          href="https://www.instagram.com/p/DI-ViSqzXa_/?igsh=MXV5bXlyaGFrOW84Mw=="
+          target="_blank"
+          class="feature-card"
+        >
+          <h3>Empowering Girls in STEM: Meet Ananya Raghunath</h3>
+          <p>Spotlight article on her work with CodeNinjas and JerseySTEM.</p>
+        </a>
+
+        <a
+          href="https://news.njit.edu/njits-honors-college-continues-30th-anniversary-celebration-research-forum"
+          target="_blank"
+          class="feature-card"
+        >
+          <h3>AI for Good: NJIT Lab Tackles Harmful Code Prompts</h3>
+          <p>
+            Research assistant Ananya works on defending LLMs from jailbreaks.
+          </p>
+        </a>
+      </div>
+    </section>
+
+    <footer>
+      <p>© 2025 Ananya Raghunath | Built with 💻 + 🎨</p>
+    </footer>
+
+    <!-- AOS JS -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+      AOS.init({
+        duration: 1000,
+        once: false,
+        mirror: true,
+        anchorPlacement: "top-bottom",
+      });
+    </script>
+
+    <script>
+      let sparkleEnabled = false;
+
+      const toggleButton = document.getElementById("toggle-sparkle");
+
+      toggleButton.addEventListener("click", () => {
+        sparkleEnabled = !sparkleEnabled;
+        toggleButton.textContent = sparkleEnabled ? "✨" : "🌙";
+      });
+
+      document.addEventListener("mousemove", (e) => {
+        if (!sparkleEnabled) return;
+
+        const sparkle = document.createElement("div");
+        sparkle.classList.add("sparkle");
+        sparkle.style.left = `${e.pageX}px`;
+        sparkle.style.top = `${e.pageY}px`;
+        sparkle.style.transform = `rotate(${Math.random() * 360}deg)`; // add this
+
+        document.body.appendChild(sparkle);
+
+        setTimeout(() => {
+          sparkle.remove();
+        }, 600);
+      });
+    </script>
+  </body>
+</html>
