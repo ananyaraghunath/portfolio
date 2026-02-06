@@ -1,99 +1,93 @@
+:root {
+  --bg: #0f172a;
+  --panel: #020617;
+  --border: #1e293b;
+  --text: #e5e7eb;
+  --muted: #94a3b8;
+}
+
+* {
+  box-sizing: border-box;
+}
+
 body {
   margin: 0;
   font-family: Inter, sans-serif;
-  background: #1f1f1f;
-  color: #eaeaea;
+  background: var(--bg);
+  color: var(--text);
+  height: 100vh;
 }
 
-.hero {
-  height: 100vh;
-  background-size: cover;
-  background-position: center;
+.container {
+  max-width: 900px;
+  margin: auto;
+  height: 100%;
   display: flex;
   flex-direction: column;
-  align-items: center;
-  justify-content: center;
+  justify-content: space-between;
+  padding: 32px 16px;
 }
 
-.logo {
-  font-size: 4rem;
-  font-weight: 700;
-  margin-bottom: 40px;
+/* OUTPUT */
+#output {
+  flex: 1;
 }
 
-.search-container {
-  width: 90%;
-  max-width: 600px;
+.placeholder {
+  color: var(--muted);
+  font-size: 1.1rem;
+}
+
+/* PROMPT AREA */
+.prompt-area {
   position: relative;
 }
 
-.search-container input {
+.prompt-box {
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 14px 16px;
+  background: var(--panel);
+}
+
+.prompt-box input {
   width: 100%;
-  padding: 16px 24px;
-  border-radius: 999px;
+  background: transparent;
   border: none;
-  font-size: 1.1rem;
-  background: #2a2a2a;
-  color: #fff;
+  outline: none;
+  color: var(--text);
+  font-size: 1rem;
+  cursor: pointer;
 }
 
-.trending {
-  background: #2a2a2a;
-  border-radius: 16px;
-  margin-top: 10px;
-  padding: 16px;
+/* SUGGESTIONS */
+.suggestions {
+  position: absolute;
+  bottom: 60px;
+  width: 100%;
+  background: var(--panel);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
 }
 
-.trending .label {
-  color: #aaa;
-  margin-bottom: 10px;
-}
-
-.trending button {
-  display: block;
+.suggestions button {
   background: none;
   border: none;
-  color: #eaeaea;
-  font-size: 1rem;
-  padding: 8px 0;
-  cursor: pointer;
+  color: var(--text);
+  padding: 10px;
   text-align: left;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.suggestions button:hover {
+  background: #1e293b;
 }
 
 .hidden {
   display: none;
-}
-
-#chat {
-  padding: 40px;
-  max-width: 900px;
-  margin: auto;
-}
-
-.message {
-  margin-bottom: 24px;
-  padding: 16px 20px;
-  border-radius: 16px;
-  max-width: 85%;
-}
-
-.message.assistant {
-  background: #2f2f2f;
-}
-
-.message.user {
-  background: #6d28d9;
-  margin-left: auto;
-}
-
-.message img {
-  width: 160px;
-  margin: 10px;
-  border-radius: 8px;
-}
-
-footer {
-  text-align: center;
-  padding: 20px;
-  color: #888;
 }

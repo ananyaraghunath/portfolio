@@ -2,7 +2,7 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <title>Ask Ananya</title>
+    <title>Ananya Raghunath</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
     <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -14,129 +14,92 @@
   </head>
 
   <body>
-    <!-- HERO -->
-    <section
-      class="hero"
-      style="background-image: url(&quot;images/hero.png&quot;)"
-    >
-      <h1 class="logo">[Ananya]gle</h1>
+    <main class="container">
+      <!-- OUTPUT AREA -->
+      <section id="output">
+        <p class="placeholder">Ask about my experience, projects, or skills.</p>
+      </section>
 
-      <!-- SEARCH -->
-      <div class="search-container">
-        <input
-          type="text"
-          placeholder="Search Ananya’s portfolio"
-          onclick="showTrending()"
-          readonly
-        />
-        <div id="trending" class="trending hidden">
-          <p class="label">Trending searches</p>
-          <button onclick="ask('experience')">ananya’s experience</button>
-          <button onclick="ask('skills')">ananya’s skills</button>
-          <button onclick="ask('projects')">ananya’s projects</button>
-          <button onclick="ask('about')">who is ananya?</button>
+      <!-- PROMPT AREA -->
+      <section class="prompt-area">
+        <div class="suggestions hidden" id="suggestions">
+          <button onclick="selectPrompt('experience')">
+            Tell me about your experience
+          </button>
+          <button onclick="selectPrompt('projects')">
+            What projects have you built?
+          </button>
+          <button onclick="selectPrompt('skills')">
+            What are your technical skills?
+          </button>
+          <button onclick="selectPrompt('about')">Who are you?</button>
         </div>
-      </div>
-    </section>
 
-    <!-- CHAT -->
-    <main id="chat">
-      <div class="message assistant">
-        👋 Hi! I’m <strong>AnanyaGPT</strong>. Click a search above to explore
-        my experience, skills, and projects.
-      </div>
+        <div class="prompt-box">
+          <input
+            type="text"
+            placeholder="Ask anything"
+            onclick="showSuggestions()"
+            readonly
+          />
+        </div>
+      </section>
     </main>
 
-    <footer>© 2026 Ananya Raghunath · Search-powered portfolio</footer>
-
     <script>
-      const chat = document.getElementById("chat");
-      const trending = document.getElementById("trending");
+      const suggestions = document.getElementById("suggestions");
+      const output = document.getElementById("output");
 
-      function showTrending() {
-        trending.classList.remove("hidden");
+      function showSuggestions() {
+        suggestions.classList.remove("hidden");
       }
 
-      function addMessage(role, html) {
-        const div = document.createElement("div");
-        div.className = `message ${role}`;
-        div.innerHTML = html;
-        chat.appendChild(div);
-        chat.scrollTop = chat.scrollHeight;
+      function selectPrompt(type) {
+        suggestions.classList.add("hidden");
+        output.innerHTML = responses[type];
       }
 
-      function ask(type) {
-        trending.classList.add("hidden");
+      const responses = {
+        about: `
+        <h2>About Me</h2>
+        <p>
+          I’m Ananya Raghunath, an Honors Computer Science student at NJIT
+          focused on AI safety, software engineering, and human-centered systems.
+        </p>
+      `,
+        experience: `
+        <h2>Experience</h2>
+        <ul>
+          <li><strong>PSEG</strong> – IT Disaster Recovery Intern</li>
+          <li><strong>NJIT AI4SG Lab</strong> – AI Safety Research</li>
+          <li><strong>IndiaAsha</strong> – Application Developer Intern</li>
+          <li><strong>STEM Instructor</strong> – CodeNinjas & JerseySTEM</li>
+        </ul>
+      `,
+        projects: `
+        <h2>Projects</h2>
+        <ul>
+          <li><strong>Defending LLM Jailbreaking</strong> – Research, 1st Place</li>
+          <li><strong>Blend’d Beauty</strong> – AI recommendation platform</li>
+          <li><strong>Connect Newark</strong> – Community engagement app</li>
+        </ul>
+      `,
+        skills: `
+        <h2>Skills</h2>
+        <p>
+          Python, Java, C++, JavaScript, SQL<br/>
+          React, Flask, Hugging Face<br/>
+          LLMs, Prompt Engineering, AI Safety
+        </p>
+      `,
+      };
 
-        addMessage("user", type.replace("-", " "));
-
-        setTimeout(() => {
-          respond(type);
-        }, 600);
-      }
-
-      function respond(type) {
-        const responses = {
-          about: `
-          <strong>Ananya Raghunath</strong> is an Honors CS student at NJIT
-          specializing in AI safety, software engineering, and human-centered tech.
-          <br/><br/>
-          <img src="images/headshot.jpg" />
-          <img src="images/NJIT.png" />
-        `,
-
-          skills: `
-          <ul>
-            <li>Python, Java, C++, JavaScript, SQL</li>
-            <li>LLMs, Prompt Engineering, AI Safety</li>
-            <li>React, Flask, Hugging Face</li>
-          </ul>
-        `,
-
-          experience: `
-          <strong>PSEG</strong> – IT Disaster Recovery Intern<br/>
-          <img src="images/pseg.png" />
-          <br/><br/>
-
-          <strong>NJIT AI4SG Lab</strong><br/>
-          <img src="images/njit.png" />
-          <br/><br/>
-
-          <strong>IndiaAsha</strong><br/>
-          <img src="images/indiaAsha.png" />
-          <br/><br/>
-
-          <strong>Instructor</strong><br/>
-          <img src="images/tutor.png" />
-        `,
-
-          projects: `
-          <strong>Blend’d Beauty</strong><br/>
-          <img src="images/Blend.jpg" />
-          <img src="images/BlenddHome.png" />
-          <img src="images/BlenddApp.png" />
-          <img src="images/BlenddPrice.png" />
-
-          <br/><br/>
-
-          <strong>Defending LLM Jailbreaking</strong><br/>
-          <img src="images/HIRF.jpg" />
-          <img src="images/HIRFR.png" />
-
-          <br/><br/>
-
-          <strong>Connect Newark (GirlHacks)</strong><br/>
-          <img src="images/girlHacks.jpeg" />
-          <img src="images/RTC.JPEG" />
-
-          <br/><br/>
-          <img src="images/STC.png" />
-          <img src="images/COOCHENAS.png" />
-        `,
-        };
-
-        addMessage("assistant", responses[type]);
-      }
+      // Close suggestions if clicking outside
+      document.addEventListener("click", (e) => {
+        if (!e.target.closest(".prompt-area")) {
+          suggestions.classList.add("hidden");
+        }
+      });
     </script>
   </body>
 </html>
