@@ -4,8 +4,6 @@
     <meta charset="UTF-8" />
     <title>Ananya Raghunath</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link
       href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap"
       rel="stylesheet"
@@ -14,92 +12,114 @@
   </head>
 
   <body>
-    <main class="container">
-      <!-- OUTPUT AREA -->
-      <section id="output">
-        <p class="placeholder">Ask about my experience, projects, or skills.</p>
-      </section>
+    <div class="app">
+      <!-- SIDEBAR -->
+      <aside class="sidebar">
+        <h2>Your chats</h2>
 
-      <!-- PROMPT AREA -->
-      <section class="prompt-area">
-        <div class="suggestions hidden" id="suggestions">
-          <button onclick="selectPrompt('experience')">
-            Tell me about your experience
-          </button>
-          <button onclick="selectPrompt('projects')">
-            What projects have you built?
-          </button>
-          <button onclick="selectPrompt('skills')">
-            What are your technical skills?
-          </button>
-          <button onclick="selectPrompt('about')">Who are you?</button>
-        </div>
+        <button onclick="loadPage('about')">About Ananya</button>
+        <button onclick="loadPage('projects')">Projects</button>
+        <button onclick="loadPage('contact')">Contact Me</button>
 
-        <div class="prompt-box">
-          <input
-            type="text"
-            placeholder="Ask anything"
-            onclick="showSuggestions()"
-            readonly
-          />
+        <div class="divider"></div>
+
+        <button class="ghost" onclick="loadPage('gpt')">✨ AnanyaGPT</button>
+      </aside>
+
+      <!-- MAIN -->
+      <main class="main">
+        <section id="content">
+          <div class="hero">
+            <img src="images/headshot.jpg" />
+            <h1>Ananya Raghunath</h1>
+            <p>Computer Science · AI Safety · Software Engineering</p>
+          </div>
+        </section>
+
+        <!-- PROMPT BAR -->
+        <div class="prompt-bar">
+          <input type="text" placeholder="Ask or select a section" disabled />
         </div>
-      </section>
-    </main>
+      </main>
+    </div>
 
     <script>
-      const suggestions = document.getElementById("suggestions");
-      const output = document.getElementById("output");
+      const content = document.getElementById("content");
 
-      function showSuggestions() {
-        suggestions.classList.remove("hidden");
+      function loadPage(page) {
+        const pages = {
+          about: `
+          <h2>About Me</h2>
+          <p>
+            I’m Ananya Raghunath, an Honors Computer Science student at NJIT with
+            interests in AI safety, software engineering, and human-centered technology.
+          </p>
+          <div class="image-row">
+            <img src="images/NJIT.png" />
+            <img src="images/hero.png" />
+          </div>
+        `,
+
+          projects: `
+          <h2>Projects</h2>
+
+          <div class="card">
+            <h3>Blend’d Beauty</h3>
+            <p>AI-powered beauty recommendation platform.</p>
+            <div class="image-row">
+              <img src="images/Blend.jpg" />
+              <img src="images/BlenddHome.png" />
+              <img src="images/BlenddApp.png" />
+              <img src="images/BlenddPrice.png" />
+            </div>
+          </div>
+
+          <div class="card">
+            <h3>Defending LLM Jailbreaking</h3>
+            <p>1st Place – Honors Research Forum</p>
+            <div class="image-row">
+              <img src="images/HIRF.jpg" />
+              <img src="images/HIRFR.png" />
+            </div>
+          </div>
+
+          <div class="card">
+            <h3>Connect Newark (GirlHacks)</h3>
+            <div class="image-row">
+              <img src="images/girlHacks.jpeg" />
+              <img src="images/RTC.JPEG" />
+            </div>
+          </div>
+        `,
+
+          contact: `
+          <h2>Contact Me</h2>
+          <p>
+            📧 ananyaraghunath06@gmail.com<br/>
+            🔗 LinkedIn & GitHub available upon request
+          </p>
+          <div class="image-row">
+            <img src="images/pseg.png" />
+            <img src="images/indiaAsha.png" />
+            <img src="images/tutor.png" />
+          </div>
+        `,
+
+          gpt: `
+          <h2>AnanyaGPT</h2>
+          <p>
+            A conversational view of my portfolio — designed for exploration,
+            not automation.
+          </p>
+          <div class="image-row">
+            <img src="images/STC.png" />
+            <img src="images/COOCHENAS.png" />
+          </div>
+        `,
+        };
+
+        content.innerHTML = pages[page];
       }
-
-      function selectPrompt(type) {
-        suggestions.classList.add("hidden");
-        output.innerHTML = responses[type];
-      }
-
-      const responses = {
-        about: `
-        <h2>About Me</h2>
-        <p>
-          I’m Ananya Raghunath, an Honors Computer Science student at NJIT
-          focused on AI safety, software engineering, and human-centered systems.
-        </p>
-      `,
-        experience: `
-        <h2>Experience</h2>
-        <ul>
-          <li><strong>PSEG</strong> – IT Disaster Recovery Intern</li>
-          <li><strong>NJIT AI4SG Lab</strong> – AI Safety Research</li>
-          <li><strong>IndiaAsha</strong> – Application Developer Intern</li>
-          <li><strong>STEM Instructor</strong> – CodeNinjas & JerseySTEM</li>
-        </ul>
-      `,
-        projects: `
-        <h2>Projects</h2>
-        <ul>
-          <li><strong>Defending LLM Jailbreaking</strong> – Research, 1st Place</li>
-          <li><strong>Blend’d Beauty</strong> – AI recommendation platform</li>
-          <li><strong>Connect Newark</strong> – Community engagement app</li>
-        </ul>
-      `,
-        skills: `
-        <h2>Skills</h2>
-        <p>
-          Python, Java, C++, JavaScript, SQL<br/>
-          React, Flask, Hugging Face<br/>
-          LLMs, Prompt Engineering, AI Safety
-        </p>
-      `,
-      };
-
-      // Close suggestions if clicking outside
-      document.addEventListener("click", (e) => {
-        if (!e.target.closest(".prompt-area")) {
-          suggestions.classList.add("hidden");
-        }
-      });
     </script>
   </body>
 </html>
