@@ -2,8 +2,8 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
+    <title>Ask Ananya</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Ask Ananya | Interactive Portfolio</title>
 
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link
@@ -14,131 +14,124 @@
   </head>
 
   <body>
-    <!-- NAV -->
-    <nav>
-      <div class="logo">Ask Ananya</div>
-      <div class="nav-meta">System: Portfolio Mode</div>
-    </nav>
+    <!-- HERO -->
+    <section
+      class="hero"
+      style="background-image: url(&quot;images/hero.png&quot;)"
+    >
+      <h1 class="logo">[Ananya]gle</h1>
 
-    <!-- CHAT APP -->
-    <main class="app">
-      <div class="chat-window" id="chat-window">
-        <div class="message assistant">
-          👋 Hi! I’m <strong>AnanyaGPT</strong> — an interactive portfolio
-          trained on Ananya Raghunath’s experiences, projects, and skills.<br /><br />
-          Ask me anything 👇
+      <!-- SEARCH -->
+      <div class="search-container">
+        <input
+          type="text"
+          placeholder="Search Ananya’s portfolio"
+          onclick="showTrending()"
+          readonly
+        />
+        <div id="trending" class="trending hidden">
+          <p class="label">Trending searches</p>
+          <button onclick="ask('experience')">ananya’s experience</button>
+          <button onclick="ask('skills')">ananya’s skills</button>
+          <button onclick="ask('projects')">ananya’s projects</button>
+          <button onclick="ask('about')">who is ananya?</button>
         </div>
       </div>
+    </section>
 
-      <!-- PROMPTS -->
-      <div class="prompt-bar">
-        <button onclick="ask('about')">Tell me about Ananya</button>
-        <button onclick="ask('skills')">What are her skills?</button>
-        <button onclick="ask('experience')">Show me her experience</button>
-        <button onclick="ask('projects')">What has she built?</button>
-        <button onclick="ask('why')">Why should I hire her?</button>
+    <!-- CHAT -->
+    <main id="chat">
+      <div class="message assistant">
+        👋 Hi! I’m <strong>AnanyaGPT</strong>. Click a search above to explore
+        my experience, skills, and projects.
       </div>
     </main>
 
-    <!-- FOOTER -->
-    <footer>
-      © 2026 Ananya Raghunath · Built like ChatGPT, powered by code & curiosity
-    </footer>
+    <footer>© 2026 Ananya Raghunath · Search-powered portfolio</footer>
 
-    <!-- SCRIPT -->
     <script>
-      const chat = document.getElementById("chat-window");
+      const chat = document.getElementById("chat");
+      const trending = document.getElementById("trending");
 
-      function addMessage(role, text) {
-        const div = document.createElement("div");
-        div.className = `message ${role}`;
-        div.innerHTML = text;
-        chat.appendChild(div);
-        chat.scrollTop = chat.scrollHeight;
+      function showTrending() {
+        trending.classList.remove("hidden");
       }
 
-      function thinking() {
+      function addMessage(role, html) {
         const div = document.createElement("div");
-        div.className = "message assistant thinking";
-        div.innerHTML = "Thinking…";
+        div.className = `message ${role}`;
+        div.innerHTML = html;
         chat.appendChild(div);
         chat.scrollTop = chat.scrollHeight;
-        return div;
       }
 
       function ask(type) {
-        const prompts = {
-          about: "Tell me about Ananya",
-          skills: "What are her technical skills?",
-          experience: "What experience does she have?",
-          projects: "What projects has she worked on?",
-          why: "Why should I hire Ananya?",
-        };
+        trending.classList.add("hidden");
 
-        addMessage("user", prompts[type]);
-
-        const loader = thinking();
+        addMessage("user", type.replace("-", " "));
 
         setTimeout(() => {
-          loader.remove();
           respond(type);
-        }, 900);
+        }, 600);
       }
 
       function respond(type) {
         const responses = {
           about: `
-        👩‍💻 <strong>Ananya Raghunath</strong> is an Honors Computer Science student at
-        New Jersey Institute of Technology with a strong focus on AI safety,
-        software engineering, and human-centered technology.<br/><br/>
-        She blends technical rigor with creativity — from large language model
-        research to award-winning hackathon products. Outside of code, she enjoys
-        art, beauty tech, and mentoring students in STEM.
+          <strong>Ananya Raghunath</strong> is an Honors CS student at NJIT
+          specializing in AI safety, software engineering, and human-centered tech.
+          <br/><br/>
+          <img src="images/headshot.jpg" />
+          <img src="images/NJIT.png" />
         `,
 
           skills: `
-        <strong>Core Skills:</strong><br/><br/>
-        💻 Languages: Python, Java, C++, JavaScript, SQL, R<br/>
-        🧠 AI/ML: Large Language Models, Prompt Engineering, Transformers,
-        Classifier Training, AI Safety<br/>
-        ⚙️ Frameworks: React, Flask, Hugging Face, MATLAB<br/>
-        🛠 Tools: Git, Power BI, Power Automate, REST APIs, Firebase, VS Code
+          <ul>
+            <li>Python, Java, C++, JavaScript, SQL</li>
+            <li>LLMs, Prompt Engineering, AI Safety</li>
+            <li>React, Flask, Hugging Face</li>
+          </ul>
         `,
 
           experience: `
-        <strong>Experience Highlights:</strong><br/><br/>
-        🏢 <strong>PSEG</strong> — IT Disaster Recovery & Business Continuity Intern<br/>
-        • Supported enterprise DR planning, testing, and governance<br/>
-        • Led tabletop exercises and automated workflows<br/><br/>
+          <strong>PSEG</strong> – IT Disaster Recovery Intern<br/>
+          <img src="images/pseg.png" />
+          <br/><br/>
 
-        🧪 <strong>NJIT AI4SG Lab</strong> — Undergraduate Research Assistant<br/>
-        • Researched prompt alignment and harmful code generation in LLMs<br/>
-        • Evaluated jailbreak defenses on real benchmarks<br/><br/>
+          <strong>NJIT AI4SG Lab</strong><br/>
+          <img src="images/njit.png" />
+          <br/><br/>
 
-        🌍 <strong>IndiaAsha</strong> — Application Developer Intern<br/>
-        • Built calendaring tools using astronomical algorithms
+          <strong>IndiaAsha</strong><br/>
+          <img src="images/indiaAsha.png" />
+          <br/><br/>
+
+          <strong>Instructor</strong><br/>
+          <img src="images/tutor.png" />
         `,
 
           projects: `
-        <strong>Selected Projects:</strong><br/><br/>
-        🏆 <strong>Defending LLMs from Jailbreaking</strong><br/>
-        • 1st Place — 2025 Honors Research Forum<br/>
-        • Built classifiers to prevent harmful latent-space code generation<br/><br/>
+          <strong>Blend’d Beauty</strong><br/>
+          <img src="images/Blend.jpg" />
+          <img src="images/BlenddHome.png" />
+          <img src="images/BlenddApp.png" />
+          <img src="images/BlenddPrice.png" />
 
-        💄 <strong>Blend’d Beauty</strong><br/>
-        • AI-powered beauty recommendation platform<br/>
-        • 1st Place — 2024 Interdisciplinary Research Forum<br/><br/>
+          <br/><br/>
 
-        🌐 <strong>Connect Newark</strong><br/>
-        • Community engagement web app built at GirlHacks
-        `,
+          <strong>Defending LLM Jailbreaking</strong><br/>
+          <img src="images/HIRF.jpg" />
+          <img src="images/HIRFR.png" />
 
-          why: `
-        <strong>Why Ananya?</strong><br/><br/>
-        ✅ Proven ability to ship real systems — not just coursework<br/>
-        ✅ Research + industry experience in AI and software engineering<br/>
-        ✅ Clear communicator who thrives in cross-functional teams<br/>
-        ✅ Curious, driven, and comfortable working at the edge of new tech
+          <br/><br/>
+
+          <strong>Connect Newark (GirlHacks)</strong><br/>
+          <img src="images/girlHacks.jpeg" />
+          <img src="images/RTC.JPEG" />
+
+          <br/><br/>
+          <img src="images/STC.png" />
+          <img src="images/COOCHENAS.png" />
         `,
         };
 
