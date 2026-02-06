@@ -129,3 +129,135 @@ body {
 .hidden {
   display: none;
 }
+/* ============================= */
+/* ChatGPT-style visual tuning   */
+/* ============================= */
+
+body {
+  color: #e5e7eb;
+  background-color: #0f172a;
+}
+
+/* Top bar */
+.topbar {
+  position: sticky;
+  top: 0;
+  z-index: 1100;
+  background: #020617;
+  border-bottom: 1px solid #1e293b;
+  padding: 10px 20px;
+}
+
+.topbar-left {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.topbar-avatar {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  object-fit: cover;
+  cursor: pointer;
+  border: 2px solid #9e8eefd2;
+}
+
+.topbar-title {
+  font-size: 0.95rem;
+  color: #9ca3af;
+  font-weight: 500;
+}
+
+/* Constrain content width like ChatGPT */
+section:not(.hero-intro) {
+  max-width: 720px;
+}
+
+/* ============================= */
+/* Image formatting FIXES        */
+/* ============================= */
+
+/* Unified image group container */
+.logo-column2,
+.about-gallery,
+.features-grid {
+  align-items: center;
+}
+
+/* All content images */
+.logo-column2 img,
+.about-gallery img,
+.project-card img,
+.experience-entry img {
+  width: 100%;
+  max-width: 320px;
+  aspect-ratio: 16 / 10;
+  object-fit: cover;
+  border-radius: 12px;
+  background-color: #020617;
+}
+
+/* Project image grid (ChatGPT-style cards) */
+.logo-column2 {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 16px;
+  margin: 12px 0 4px;
+}
+
+/* About photo cards: stop distortion */
+.photo-card {
+  width: 180px;
+  height: 240px;
+}
+
+.photo-card img {
+  object-fit: cover;
+}
+
+/* Experience logos: keep them logos */
+.logo-column img {
+  width: 120px;
+  height: auto;
+  max-height: 80px;
+  object-fit: contain;
+  margin-bottom: 6px;
+}
+
+/* ============================= */
+/* Card styling like ChatGPT     */
+/* ============================= */
+
+.project-card,
+.experience-entry {
+  background-color: #020617;
+  color: #e5e7eb;
+  border: 1px solid #1e293b;
+}
+
+.details h3,
+.project-card h3 {
+  color: #c7d2fe;
+}
+
+.project-card p,
+.details ul li {
+  color: #d1d5db;
+}
+
+/* Badges calmer */
+.badges span {
+  background-color: #1e293b;
+  color: #c7d2fe;
+}
+
+/* Headings */
+h2 {
+  color: #c7d2fe;
+}
+
+/* Links */
+a {
+  color: #9e8eefd2;
+}
