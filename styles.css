@@ -1,10 +1,10 @@
 :root {
-  --bg: #0f172a;
-  --panel: #020617;
-  --border: #1e293b;
-  --text: #e5e7eb;
-  --muted: #94a3b8;
-  --accent: #7c3aed;
+  --bg: #0f0f0f;
+  --panel: #1e1e1e;
+  --border: #2a2a2a;
+  --text: #e5e5e5;
+  --muted: #a1a1aa;
+  --accent: #7c7cff;
 }
 
 * {
@@ -26,16 +26,16 @@ body {
 
 /* SIDEBAR */
 .sidebar {
-  width: 240px;
+  width: 260px;
   background: var(--panel);
-  padding: 20px;
   border-right: 1px solid var(--border);
+  padding: 16px;
 }
 
-.sidebar h2 {
-  font-size: 1rem;
-  margin-bottom: 16px;
+.sidebar-header {
+  font-size: 0.85rem;
   color: var(--muted);
+  margin-bottom: 12px;
 }
 
 .sidebar button {
@@ -45,81 +45,87 @@ body {
   color: var(--text);
   padding: 10px;
   text-align: left;
-  border-radius: 8px;
+  border-radius: 6px;
   cursor: pointer;
 }
 
 .sidebar button:hover {
-  background: #1e293b;
+  background: #2a2a2a;
 }
 
-.sidebar .ghost {
+.sidebar .accent {
   color: var(--accent);
 }
 
 .divider {
   height: 1px;
   background: var(--border);
-  margin: 16px 0;
+  margin: 12px 0;
 }
 
 /* MAIN */
 .main {
   flex: 1;
   display: flex;
-  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 
-#content {
-  flex: 1;
-  padding: 40px;
-  overflow-y: auto;
-}
-
-/* HERO */
-.hero {
+/* HOME */
+.home {
+  max-width: 640px;
+  width: 100%;
   text-align: center;
 }
 
-.hero img {
-  width: 140px;
-  border-radius: 50%;
-  margin-bottom: 16px;
+.home h1 {
+  font-size: 2rem;
+  font-weight: 600;
+  margin-bottom: 30px;
 }
 
-/* CARDS */
-.card {
-  background: #020617;
-  border: 1px solid var(--border);
-  border-radius: 16px;
-  padding: 20px;
-  margin-bottom: 24px;
+/* PROMPT */
+.prompt-wrapper {
+  position: relative;
 }
 
-/* IMAGES */
-.image-row {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 12px;
-  margin-top: 12px;
-}
-
-.image-row img {
-  width: 160px;
-  border-radius: 8px;
-}
-
-/* PROMPT BAR */
-.prompt-bar {
-  border-top: 1px solid var(--border);
-  padding: 16px;
-}
-
-.prompt-bar input {
+.prompt-wrapper input {
   width: 100%;
-  padding: 14px;
-  border-radius: 12px;
+  padding: 16px 20px;
+  border-radius: 14px;
   border: 1px solid var(--border);
-  background: #020617;
-  color: var(--muted);
+  background: #1c1c1c;
+  color: var(--text);
+  font-size: 1rem;
+  cursor: pointer;
+}
+
+/* SUGGESTIONS */
+.suggestions {
+  position: absolute;
+  top: 60px;
+  width: 100%;
+  background: var(--panel);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 8px;
+  text-align: left;
+}
+
+.suggestions button {
+  width: 100%;
+  background: none;
+  border: none;
+  color: var(--text);
+  padding: 10px;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.suggestions button:hover {
+  background: #2a2a2a;
+}
+
+.hidden {
+  display: none;
 }

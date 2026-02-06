@@ -15,111 +15,48 @@
     <div class="app">
       <!-- SIDEBAR -->
       <aside class="sidebar">
-        <h2>Your chats</h2>
+        <div class="sidebar-header">Your chats</div>
 
         <button onclick="loadPage('about')">About Ananya</button>
+        <button onclick="loadPage('experience')">Experience</button>
         <button onclick="loadPage('projects')">Projects</button>
-        <button onclick="loadPage('contact')">Contact Me</button>
+        <button onclick="loadPage('contact')">Contact</button>
 
         <div class="divider"></div>
-
-        <button class="ghost" onclick="loadPage('gpt')">✨ AnanyaGPT</button>
+        <button class="accent">AnanyaGPT (coming soon)</button>
       </aside>
 
       <!-- MAIN -->
       <main class="main">
-        <section id="content">
-          <div class="hero">
-            <img src="images/headshot.jpg" />
-            <h1>Ananya Raghunath</h1>
-            <p>Computer Science · AI Safety · Software Engineering</p>
+        <section id="content" class="home">
+          <h1>What would you like to learn today?</h1>
+
+          <!-- PROMPT INPUT -->
+          <div class="prompt-wrapper">
+            <input
+              type="text"
+              placeholder="Ask anything"
+              readonly
+              onclick="showSuggestions()"
+            />
+
+            <div id="suggestions" class="suggestions hidden">
+              <button onclick="loadPage('about')">Tell me about Ananya</button>
+              <button onclick="loadPage('experience')">
+                What experience does she have?
+              </button>
+              <button onclick="loadPage('projects')">
+                Show me her projects
+              </button>
+              <button onclick="loadPage('contact')">
+                How can I contact her?
+              </button>
+            </div>
           </div>
         </section>
-
-        <!-- PROMPT BAR -->
-        <div class="prompt-bar">
-          <input type="text" placeholder="Ask or select a section" disabled />
-        </div>
       </main>
     </div>
 
-    <script>
-      const content = document.getElementById("content");
-
-      function loadPage(page) {
-        const pages = {
-          about: `
-          <h2>About Me</h2>
-          <p>
-            I’m Ananya Raghunath, an Honors Computer Science student at NJIT with
-            interests in AI safety, software engineering, and human-centered technology.
-          </p>
-          <div class="image-row">
-            <img src="images/NJIT.png" />
-            <img src="images/hero.png" />
-          </div>
-        `,
-
-          projects: `
-          <h2>Projects</h2>
-
-          <div class="card">
-            <h3>Blend’d Beauty</h3>
-            <p>AI-powered beauty recommendation platform.</p>
-            <div class="image-row">
-              <img src="images/Blend.jpg" />
-              <img src="images/BlenddHome.png" />
-              <img src="images/BlenddApp.png" />
-              <img src="images/BlenddPrice.png" />
-            </div>
-          </div>
-
-          <div class="card">
-            <h3>Defending LLM Jailbreaking</h3>
-            <p>1st Place – Honors Research Forum</p>
-            <div class="image-row">
-              <img src="images/HIRF.jpg" />
-              <img src="images/HIRFR.png" />
-            </div>
-          </div>
-
-          <div class="card">
-            <h3>Connect Newark (GirlHacks)</h3>
-            <div class="image-row">
-              <img src="images/girlHacks.jpeg" />
-              <img src="images/RTC.JPEG" />
-            </div>
-          </div>
-        `,
-
-          contact: `
-          <h2>Contact Me</h2>
-          <p>
-            📧 ananyaraghunath06@gmail.com<br/>
-            🔗 LinkedIn & GitHub available upon request
-          </p>
-          <div class="image-row">
-            <img src="images/pseg.png" />
-            <img src="images/indiaAsha.png" />
-            <img src="images/tutor.png" />
-          </div>
-        `,
-
-          gpt: `
-          <h2>AnanyaGPT</h2>
-          <p>
-            A conversational view of my portfolio — designed for exploration,
-            not automation.
-          </p>
-          <div class="image-row">
-            <img src="images/STC.png" />
-            <img src="images/COOCHENAS.png" />
-          </div>
-        `,
-        };
-
-        content.innerHTML = pages[page];
-      }
-    </script>
+    <script src="app.js"></script>
   </body>
 </html>
