@@ -2,73 +2,902 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <title>Ananya Raghunath</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap"
-      rel="stylesheet"
-    />
-    <link rel="stylesheet" href="styles.css" />
+    <title>AnanyaGPT | Candidate Website</title>
+    <style>
+      :root {
+        --bg: #0d0d0d;
+        --panel: #171717;
+        --panel-2: #1f1f1f;
+        --panel-3: #242424;
+        --line: rgba(255, 255, 255, 0.08);
+        --text: #ececec;
+        --muted: #a3a3a3;
+        --green: #10a37f;
+        --green-soft: rgba(16, 163, 127, 0.12);
+        --shadow: 0 20px 60px rgba(0, 0, 0, 0.35);
+        --radius-xl: 24px;
+        --radius-lg: 18px;
+        --radius-md: 14px;
+        --max: 860px;
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+      html {
+        scroll-behavior: smooth;
+      }
+      body {
+        margin: 0;
+        font-family:
+          Inter,
+          ui-sans-serif,
+          system-ui,
+          -apple-system,
+          BlinkMacSystemFont,
+          "Segoe UI",
+          sans-serif;
+        background:
+          radial-gradient(
+            circle at top,
+            rgba(16, 163, 127, 0.1),
+            transparent 20%
+          ),
+          radial-gradient(
+            circle at 20% 20%,
+            rgba(16, 163, 127, 0.05),
+            transparent 18%
+          ),
+          var(--bg);
+        color: var(--text);
+        min-height: 100vh;
+      }
+
+      a {
+        color: inherit;
+        text-decoration: none;
+      }
+      button {
+        font: inherit;
+      }
+
+      .layout {
+        display: grid;
+        grid-template-columns: 280px 1fr;
+        min-height: 100vh;
+      }
+
+      .sidebar {
+        position: sticky;
+        top: 0;
+        height: 100vh;
+        background: rgba(23, 23, 23, 0.92);
+        backdrop-filter: blur(14px);
+        border-right: 1px solid var(--line);
+        padding: 18px 14px;
+        display: flex;
+        flex-direction: column;
+        gap: 14px;
+      }
+
+      .brand {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        padding: 10px 12px;
+        border-radius: 16px;
+        background: linear-gradient(
+          180deg,
+          rgba(255, 255, 255, 0.04),
+          rgba(255, 255, 255, 0.02)
+        );
+        border: 1px solid var(--line);
+      }
+
+      .brand-mark {
+        width: 38px;
+        height: 38px;
+        border-radius: 12px;
+        display: grid;
+        place-items: center;
+        background: linear-gradient(135deg, #10a37f, #0c7a5f);
+        color: white;
+        font-weight: 800;
+        box-shadow: 0 10px 20px rgba(16, 163, 127, 0.25);
+      }
+
+      .brand-copy strong {
+        display: block;
+        font-size: 0.98rem;
+        letter-spacing: -0.02em;
+      }
+
+      .brand-copy span {
+        color: var(--muted);
+        font-size: 0.84rem;
+      }
+
+      .new-chat {
+        margin-top: 4px;
+        width: 100%;
+        border: 1px solid var(--line);
+        background: var(--panel-2);
+        color: var(--text);
+        border-radius: 14px;
+        padding: 12px 14px;
+        text-align: left;
+        cursor: pointer;
+        transition: 160ms ease;
+      }
+
+      .new-chat:hover,
+      .nav-btn:hover,
+      .chip:hover,
+      .cta:hover,
+      .ghost:hover {
+        transform: translateY(-1px);
+      }
+      .new-chat:hover {
+        background: #222;
+      }
+
+      .sidebar-label {
+        color: var(--muted);
+        font-size: 0.78rem;
+        text-transform: uppercase;
+        letter-spacing: 0.08em;
+        padding: 6px 10px 0;
+      }
+
+      .nav-group {
+        display: flex;
+        flex-direction: column;
+        gap: 6px;
+      }
+
+      .nav-btn {
+        width: 100%;
+        border: 0;
+        background: transparent;
+        color: var(--text);
+        padding: 12px 12px;
+        border-radius: 12px;
+        text-align: left;
+        cursor: pointer;
+        transition: 160ms ease;
+      }
+
+      .nav-btn.active,
+      .nav-btn:hover {
+        background: rgba(255, 255, 255, 0.055);
+      }
+
+      .sidebar-footer {
+        margin-top: auto;
+        padding: 12px;
+        border: 1px solid var(--line);
+        border-radius: 16px;
+        background: rgba(255, 255, 255, 0.03);
+        color: var(--muted);
+        font-size: 0.9rem;
+        line-height: 1.45;
+      }
+
+      .main {
+        min-width: 0;
+        display: flex;
+        flex-direction: column;
+      }
+
+      .topbar {
+        position: sticky;
+        top: 0;
+        z-index: 10;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 12px;
+        padding: 16px 24px;
+        border-bottom: 1px solid var(--line);
+        background: rgba(13, 13, 13, 0.72);
+        backdrop-filter: blur(14px);
+      }
+
+      .topbar-title {
+        font-weight: 700;
+        letter-spacing: -0.02em;
+      }
+
+      .topbar-sub {
+        color: var(--muted);
+        font-size: 0.9rem;
+        margin-top: 2px;
+      }
+
+      .topbar-actions {
+        display: flex;
+        gap: 10px;
+        flex-wrap: wrap;
+      }
+
+      .ghost,
+      .cta {
+        border-radius: 999px;
+        padding: 10px 14px;
+        border: 1px solid var(--line);
+        cursor: pointer;
+        transition: 160ms ease;
+      }
+
+      .ghost {
+        background: transparent;
+        color: var(--text);
+      }
+
+      .cta {
+        background: var(--green);
+        border-color: transparent;
+        color: white;
+        font-weight: 700;
+        box-shadow: 0 12px 24px rgba(16, 163, 127, 0.24);
+      }
+
+      .content-shell {
+        width: min(calc(100% - 32px), var(--max));
+        margin: 28px auto 48px;
+      }
+
+      .home {
+        min-height: calc(100vh - 110px);
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        gap: 22px;
+      }
+
+      .headline {
+        text-align: center;
+      }
+
+      .headline .eyebrow {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        background: var(--green-soft);
+        color: #7de2c8;
+        border: 1px solid rgba(16, 163, 127, 0.22);
+        border-radius: 999px;
+        padding: 8px 14px;
+        font-size: 0.9rem;
+        font-weight: 700;
+        margin-bottom: 16px;
+      }
+
+      h1 {
+        margin: 0;
+        font-size: clamp(2.3rem, 5vw, 4.2rem);
+        letter-spacing: -0.06em;
+        line-height: 0.95;
+      }
+
+      .subcopy {
+        color: var(--muted);
+        max-width: 62ch;
+        margin: 16px auto 0;
+        font-size: 1.05rem;
+        line-height: 1.7;
+      }
+
+      .prompt-wrap {
+        background: linear-gradient(
+          180deg,
+          rgba(255, 255, 255, 0.045),
+          rgba(255, 255, 255, 0.025)
+        );
+        border: 1px solid var(--line);
+        border-radius: 28px;
+        padding: 14px;
+        box-shadow: var(--shadow);
+      }
+
+      .prompt-box {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        background: #1a1a1a;
+        border: 1px solid rgba(255, 255, 255, 0.06);
+        border-radius: 22px;
+        padding: 14px 16px;
+      }
+
+      .prompt-box input {
+        flex: 1;
+        border: 0;
+        outline: 0;
+        background: transparent;
+        color: var(--text);
+        font-size: 1rem;
+      }
+
+      .prompt-icon {
+        width: 36px;
+        height: 36px;
+        border-radius: 12px;
+        display: grid;
+        place-items: center;
+        background: rgba(255, 255, 255, 0.06);
+        color: #89f0d4;
+        flex-shrink: 0;
+      }
+
+      .send-btn {
+        width: 42px;
+        height: 42px;
+        border: 0;
+        border-radius: 14px;
+        background: var(--green);
+        color: white;
+        font-size: 1rem;
+        font-weight: 800;
+        cursor: pointer;
+        flex-shrink: 0;
+      }
+
+      .chips {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+        margin-top: 14px;
+      }
+
+      .chip {
+        border: 1px solid var(--line);
+        background: rgba(255, 255, 255, 0.03);
+        color: var(--text);
+        padding: 10px 14px;
+        border-radius: 999px;
+        cursor: pointer;
+        transition: 160ms ease;
+      }
+
+      .chat-view {
+        display: none;
+        flex-direction: column;
+        gap: 18px;
+      }
+
+      .message {
+        display: grid;
+        grid-template-columns: 46px 1fr;
+        gap: 14px;
+        align-items: start;
+      }
+
+      .avatar {
+        width: 46px;
+        height: 46px;
+        border-radius: 14px;
+        display: grid;
+        place-items: center;
+        font-weight: 800;
+        color: white;
+        flex-shrink: 0;
+      }
+
+      .avatar.user {
+        background: #303030;
+      }
+      .avatar.ai {
+        background: linear-gradient(135deg, #10a37f, #0c7a5f);
+      }
+
+      .bubble {
+        background: linear-gradient(
+          180deg,
+          rgba(255, 255, 255, 0.04),
+          rgba(255, 255, 255, 0.02)
+        );
+        border: 1px solid var(--line);
+        border-radius: 22px;
+        padding: 18px;
+        box-shadow: var(--shadow);
+      }
+
+      .bubble h2,
+      .bubble h3 {
+        margin: 0 0 10px;
+        letter-spacing: -0.03em;
+      }
+
+      .bubble p {
+        margin: 0 0 12px;
+        color: #d6d6d6;
+        line-height: 1.7;
+      }
+
+      .bubble p:last-child {
+        margin-bottom: 0;
+      }
+
+      .grid {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 14px;
+        margin-top: 12px;
+      }
+
+      .card {
+        background: rgba(255, 255, 255, 0.03);
+        border: 1px solid var(--line);
+        border-radius: 18px;
+        padding: 16px;
+      }
+
+      .card strong {
+        display: block;
+        font-size: 1rem;
+        margin-bottom: 6px;
+        letter-spacing: -0.02em;
+      }
+
+      .card span,
+      .meta,
+      li {
+        color: var(--muted);
+        line-height: 1.6;
+      }
+
+      ul {
+        margin: 10px 0 0;
+        padding-left: 18px;
+      }
+
+      .badge-row {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+        margin-top: 12px;
+      }
+
+      .badge {
+        padding: 8px 12px;
+        border-radius: 999px;
+        background: rgba(16, 163, 127, 0.1);
+        color: #85e6cd;
+        border: 1px solid rgba(16, 163, 127, 0.18);
+        font-size: 0.88rem;
+        font-weight: 600;
+      }
+
+      .split {
+        display: grid;
+        grid-template-columns: 1.15fr 0.85fr;
+        gap: 14px;
+        margin-top: 12px;
+      }
+
+      .quote {
+        border-left: 3px solid var(--green);
+        padding-left: 14px;
+        color: #d8d8d8;
+        margin-top: 10px;
+      }
+
+      .mini-actions {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+        margin-top: 14px;
+      }
+
+      .mini-btn {
+        border: 1px solid var(--line);
+        background: rgba(255, 255, 255, 0.03);
+        color: var(--text);
+        padding: 10px 12px;
+        border-radius: 12px;
+        cursor: pointer;
+      }
+
+      .fade-in {
+        animation: fadeIn 260ms ease;
+      }
+
+      @keyframes fadeIn {
+        from {
+          opacity: 0;
+          transform: translateY(8px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      @media (max-width: 980px) {
+        .layout {
+          grid-template-columns: 1fr;
+        }
+        .sidebar {
+          position: relative;
+          height: auto;
+          border-right: 0;
+          border-bottom: 1px solid var(--line);
+        }
+        .topbar {
+          padding: 14px 16px;
+        }
+        .content-shell {
+          width: min(calc(100% - 20px), var(--max));
+        }
+      }
+
+      @media (max-width: 720px) {
+        .grid,
+        .split {
+          grid-template-columns: 1fr;
+        }
+        .message {
+          grid-template-columns: 1fr;
+        }
+        .avatar {
+          display: none;
+        }
+        .topbar {
+          flex-direction: column;
+          align-items: flex-start;
+        }
+        h1 {
+          line-height: 1;
+        }
+      }
+    </style>
   </head>
-
   <body>
-    <div class="topbar">
-      <div class="topbar-left">
-        <img
-          src="images/ananya.JPEG"
-          alt="Ananya"
-          class="topbar-avatar"
-          onclick="window.scrollTo({ top: 0, behavior: 'smooth' })"
-        />
-        <span class="topbar-title">What would you like to learn today?</span>
-      </div>
-    </div>
-
-    <div class="app">
-      <!-- SIDEBAR -->
+    <div class="layout">
       <aside class="sidebar">
-        <div class="sidebar-header">Your chats</div>
+        <div class="brand">
+          <div class="brand-mark">A</div>
+          <div class="brand-copy">
+            <strong>AnanyaGPT</strong>
+            <span>candidate assistant</span>
+          </div>
+        </div>
 
-        <button onclick="loadPage('about')">About Ananya</button>
-        <button onclick="loadPage('experience')">Experience</button>
-        <button onclick="loadPage('projects')">Projects</button>
-        <button onclick="loadPage('contact')">Contact</button>
+        <button class="new-chat" onclick="goHome()">＋ New chat</button>
 
-        <div class="divider"></div>
-        <button class="accent">AnanyaGPT (coming soon)</button>
+        <div class="sidebar-label">Explore</div>
+        <div class="nav-group">
+          <button class="nav-btn active" data-page="home" onclick="goHome()">
+            Overview
+          </button>
+          <button class="nav-btn" data-page="tldr" onclick="loadPage('tldr')">
+            TL;DR for hiring managers
+          </button>
+          <button class="nav-btn" data-page="about" onclick="loadPage('about')">
+            About Ananya
+          </button>
+          <button class="nav-btn" data-page="match" onclick="loadPage('match')">
+            Why she fits technical roles
+          </button>
+          <button
+            class="nav-btn"
+            data-page="experience"
+            onclick="loadPage('experience')"
+          >
+            Experience
+          </button>
+          <button
+            class="nav-btn"
+            data-page="projects"
+            onclick="loadPage('projects')"
+          >
+            Projects
+          </button>
+          <button
+            class="nav-btn"
+            data-page="skills"
+            onclick="loadPage('skills')"
+          >
+            Skills
+          </button>
+          <button
+            class="nav-btn"
+            data-page="contact"
+            onclick="loadPage('contact')"
+          >
+            Contact
+          </button>
+        </div>
+
+        <div class="sidebar-footer">
+          Built as a clean, ChatGPT-inspired personal site: minimal, readable,
+          and easy to scan fast.
+        </div>
       </aside>
 
-      <!-- MAIN -->
       <main class="main">
-        <section id="content" class="home">
-          <h1>What would you like to learn today?</h1>
-
-          <!-- PROMPT INPUT -->
-          <div class="prompt-wrapper">
-            <input
-              type="text"
-              placeholder="Ask anything"
-              readonly
-              onclick="showSuggestions()"
-            />
-
-            <div id="suggestions" class="suggestions hidden">
-              <button onclick="loadPage('about')">Tell me about Ananya</button>
-              <button onclick="loadPage('experience')">
-                What experience does she have?
-              </button>
-              <button onclick="loadPage('projects')">
-                Show me her projects
-              </button>
-              <button onclick="loadPage('contact')">
-                How can I contact her?
-              </button>
+        <div class="topbar">
+          <div>
+            <div class="topbar-title">AnanyaGPT</div>
+            <div class="topbar-sub">
+              A recruiter-friendly website styled like a polished AI chat
+              interface.
             </div>
           </div>
-        </section>
+          <div class="topbar-actions">
+            <button class="ghost" onclick="loadPage('tldr')">TL;DR</button>
+            <button class="cta" onclick="loadPage('contact')">Contact</button>
+          </div>
+        </div>
+
+        <div class="content-shell">
+          <section id="homeView" class="home fade-in">
+            <div class="headline">
+              <div class="eyebrow">
+                Open to software engineering, AI, and enterprise tech roles
+              </div>
+              <h1>What would you like to know about Ananya?</h1>
+              <p class="subcopy">
+                Explore her experience in software engineering, AI safety
+                research, workflow automation, product development, and teaching
+                — all through a sleek, chat-style portfolio that feels modern
+                and easy to navigate.
+              </p>
+            </div>
+
+            <div class="prompt-wrap">
+              <div class="prompt-box">
+                <div class="prompt-icon">✦</div>
+                <input
+                  id="promptInput"
+                  type="text"
+                  readonly
+                  value="Ask about her experience, projects, impact, or why she would be a strong hire…"
+                />
+                <button class="send-btn" onclick="loadPage('tldr')">↑</button>
+              </div>
+              <div class="chips">
+                <button class="chip" onclick="loadPage('tldr')">
+                  Summarize her in 30 seconds
+                </button>
+                <button class="chip" onclick="loadPage('experience')">
+                  Show her experience
+                </button>
+                <button class="chip" onclick="loadPage('projects')">
+                  Show her projects
+                </button>
+                <button class="chip" onclick="loadPage('match')">
+                  Why is she a good fit?
+                </button>
+                <button class="chip" onclick="loadPage('contact')">
+                  How do I reach her?
+                </button>
+              </div>
+            </div>
+          </section>
+
+          <section id="chatView" class="chat-view"></section>
+        </div>
       </main>
     </div>
 
-    <script src="app.js"></script>
+    <script>
+      const chatView = document.getElementById("chatView");
+      const homeView = document.getElementById("homeView");
+      const navButtons = Array.from(document.querySelectorAll(".nav-btn"));
+
+      const pages = {
+        tldr: {
+          prompt: "Give me the quick hiring-manager summary.",
+          response: `
+          <div class="bubble">
+            <h2>TL;DR</h2>
+            <p>Ananya Raghunath is a Computer Science student at NJIT with a strong mix of enterprise software exposure, applied AI research, workflow automation experience, and clear communication skills.</p>
+            <div class="grid">
+              <div class="card"><strong>Strong technical range</strong><span>Python, Java, C++, SQL, JavaScript, React, Flask, Spring Boot, REST APIs.</span></div>
+              <div class="card"><strong>Real business impact</strong><span>Reduced manual effort by 75% across 200+ IT systems through automation and better review workflows.</span></div>
+              <div class="card"><strong>Research credibility</strong><span>Won 1st place at NJIT's 2025 Forum for work on defending LLMs against jailbreak attacks.</span></div>
+              <div class="card"><strong>People skills too</strong><span>Taught 100+ students, built lesson plans, and helped grow STEM programming by 250%+.</span></div>
+            </div>
+            <div class="quote">Best fit for roles that want someone technical, organized, adaptable, and able to turn ideas into systems people can actually use.</div>
+          </div>
+        `,
+        },
+        about: {
+          prompt: "Tell me about Ananya.",
+          response: `
+          <div class="bubble">
+            <h2>About Ananya</h2>
+            <p>Ananya is an Honors Computer Science student at NJIT who blends software engineering, AI research, enterprise automation, and human-centered product thinking. Her work is practical: she likes building systems that improve how people work, learn, and interact with technology.</p>
+            <div class="split">
+              <div class="card">
+                <strong>What she gravitates toward</strong>
+                <ul>
+                  <li>Software engineering and backend development</li>
+                  <li>Applied AI and model safety</li>
+                  <li>Workflow automation and internal tools</li>
+                  <li>Products that feel intuitive and polished</li>
+                </ul>
+              </div>
+              <div class="card">
+                <strong>What makes her memorable</strong>
+                <ul>
+                  <li>Full-tuition merit scholar</li>
+                  <li>Enterprise internship experience</li>
+                  <li>Award-winning research and hackathon work</li>
+                  <li>Strong teacher and communicator</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        `,
+        },
+        match: {
+          prompt: "Why is she a strong fit for technical roles?",
+          response: `
+          <div class="bubble">
+            <h2>Why she fits technical roles well</h2>
+            <p>Even without a pasted job description, her background maps well to software engineering, product engineering, technical analyst, platform, enterprise systems, and AI-adjacent internship roles.</p>
+            <div class="grid">
+              <div class="card"><strong>Builds useful systems</strong><span>She has worked on features, data pipelines, analytics environments, APIs, dashboards, and automation flows.</span></div>
+              <div class="card"><strong>Handles ambiguity well</strong><span>Her experience spans research, enterprise teams, and hackathons — so she can move between structured and fast-moving environments.</span></div>
+              <div class="card"><strong>Thinks about impact</strong><span>Her strongest work ties engineering to outcomes like lower manual effort, better visibility, safer AI behavior, or stronger user experience.</span></div>
+              <div class="card"><strong>Communicates clearly</strong><span>Teaching and presenting are a real advantage. She can explain technical ideas without losing the point.</span></div>
+            </div>
+            <div class="badge-row">
+              <span class="badge">Software Engineering</span>
+              <span class="badge">Enterprise Automation</span>
+              <span class="badge">AI Safety Research</span>
+              <span class="badge">Data & Analytics</span>
+              <span class="badge">Human-Centered Design</span>
+            </div>
+          </div>
+        `,
+        },
+        experience: {
+          prompt: "Show me her experience.",
+          response: `
+          <div class="bubble">
+            <h2>Experience</h2>
+            <div class="grid">
+              <div class="card">
+                <strong>Wells Fargo · Software Engineering Intern</strong>
+                <span>Worked on enterprise application design, development, testing, integration, data modeling, and analytics environments.</span>
+              </div>
+              <div class="card">
+                <strong>PSEG · IT Disaster Recovery Governance Intern</strong>
+                <span>Automated business continuity review workflows, built Power BI dashboards, and improved compliance tracking across 200+ systems.</span>
+              </div>
+              <div class="card">
+                <strong>AI4SocialGood Lab · Research Assistant</strong>
+                <span>Researched latent-space defenses against LLM jailbreak attacks and built lightweight classifiers on curated prompt data.</span>
+              </div>
+              <div class="card">
+                <strong>Code Ninjas · Lead Instructor</strong>
+                <span>Taught coding to 100+ students and designed lesson plans across Python, JavaScript, C#, and Lua.</span>
+              </div>
+            </div>
+          </div>
+        `,
+        },
+        projects: {
+          prompt: "Show me her best projects.",
+          response: `
+          <div class="bubble">
+            <h2>Projects</h2>
+            <div class="grid">
+              <div class="card">
+                <strong>Blend’d Beauty</strong>
+                <span>An AI-powered beauty recommendation web app built with Flask, Firebase, and the OpenAI API. Won 1st place at NJIT 2024 Forum.</span>
+              </div>
+              <div class="card">
+                <strong>Parthenon of Productivity</strong>
+                <span>A productivity-focused web experience with strong UI/UX thinking. Won Best UI/UX at Girl Hacks 2025.</span>
+              </div>
+              <div class="card">
+                <strong>Mini-C Interpreter</strong>
+                <span>Built a Mini-C-like language interpreter in C++ using EBNF and passed 100+ unit tests.</span>
+              </div>
+              <div class="card">
+                <strong>Connect Newark</strong>
+                <span>Built a Flask backend for a hackathon MVP and helped ship a tested product under time pressure.</span>
+              </div>
+            </div>
+          </div>
+        `,
+        },
+        skills: {
+          prompt: "What are her strongest skills?",
+          response: `
+          <div class="bubble">
+            <h2>Skills</h2>
+            <div class="split">
+              <div class="card">
+                <strong>Languages & frameworks</strong>
+                <ul>
+                  <li>Python, Java, C++, SQL, JavaScript, HTML/CSS, R</li>
+                  <li>React, Flask, Spring Boot, OpenAI API</li>
+                  <li>REST APIs, Firebase, MySQL</li>
+                </ul>
+              </div>
+              <div class="card">
+                <strong>Tools & enterprise stack</strong>
+                <ul>
+                  <li>Git, Postman, Swagger, Zipkin</li>
+                  <li>Power BI, Power Automate, Power Apps</li>
+                  <li>SharePoint, ServiceNow</li>
+                </ul>
+              </div>
+            </div>
+            <div class="badge-row">
+              <span class="badge">Backend Development</span>
+              <span class="badge">Workflow Automation</span>
+              <span class="badge">AI/LLM Research</span>
+              <span class="badge">Data Pipelines</span>
+              <span class="badge">Teaching & Communication</span>
+            </div>
+          </div>
+        `,
+        },
+        contact: {
+          prompt: "How can I contact her?",
+          response: `
+          <div class="bubble">
+            <h2>Contact</h2>
+            <p>If you'd like to reach out about internships, technical roles, research, or project collaboration, here are the best places to connect.</p>
+            <div class="grid">
+              <div class="card"><strong>Email</strong><span><a href="mailto:ar2764@njit.edu">ar2764@njit.edu</a></span></div>
+              <div class="card"><strong>LinkedIn</strong><span><a href="https://linkedin.com/in/ananya-raghunath" target="_blank" rel="noreferrer">linkedin.com/in/ananya-raghunath</a></span></div>
+              <div class="card"><strong>GitHub</strong><span><a href="https://github.com/ananyaraghunath" target="_blank" rel="noreferrer">github.com/ananyaraghunath</a></span></div>
+              <div class="card"><strong>Location</strong><span>Newark, NJ</span></div>
+            </div>
+          </div>
+        `,
+        },
+      };
+
+      function setActive(page) {
+        navButtons.forEach((btn) => {
+          const active = btn.dataset.page === page;
+          btn.classList.toggle("active", active);
+        });
+      }
+
+      function renderChat(prompt, responseHTML) {
+        homeView.style.display = "none";
+        chatView.style.display = "flex";
+        chatView.className = "chat-view fade-in";
+        chatView.innerHTML = `
+        <div class="message">
+          <div class="avatar user">You</div>
+          <div class="bubble">
+            <p>${prompt}</p>
+          </div>
+        </div>
+        <div class="message">
+          <div class="avatar ai">A</div>
+          ${responseHTML}
+        </div>
+      `;
+        window.scrollTo({ top: 0, behavior: "smooth" });
+      }
+
+      function loadPage(page) {
+        const item = pages[page];
+        if (!item) return;
+        setActive(page);
+        renderChat(item.prompt, item.response);
+      }
+
+      function goHome() {
+        setActive("home");
+        chatView.style.display = "none";
+        homeView.style.display = "flex";
+        homeView.className = "home fade-in";
+        window.scrollTo({ top: 0, behavior: "smooth" });
+      }
+    </script>
   </body>
 </html>
