@@ -578,9 +578,7 @@
           <button class="nav-btn" data-page="about" onclick="loadPage('about')">
             About Ananya
           </button>
-          <button class="nav-btn" data-page="match" onclick="loadPage('match')">
-            Why she fits technical roles
-          </button>
+
           <button
             class="nav-btn"
             data-page="experience"
@@ -659,9 +657,7 @@
                 <button class="chip" onclick="loadPage('projects')">
                   Show her projects
                 </button>
-                <button class="chip" onclick="loadPage('match')">
-                  Why is she a good fit?
-                </button>
+
                 <button class="chip" onclick="loadPage('contact')">
                   How do I reach her?
                 </button>
@@ -725,28 +721,7 @@
           </div>
         `,
         },
-        match: {
-          prompt: "Why is she a strong fit for technical roles?",
-          response: `
-          <div class="bubble">
-            <h2>Why she fits technical roles well</h2>
-            <p>Even without a pasted job description, her background maps well to software engineering, product engineering, technical analyst, platform, enterprise systems, and AI-adjacent internship roles.</p>
-            <div class="grid">
-              <div class="card"><strong>Builds useful systems</strong><span>She has worked on features, data pipelines, analytics environments, APIs, dashboards, and automation flows.</span></div>
-              <div class="card"><strong>Handles ambiguity well</strong><span>Her experience spans research, enterprise teams, and hackathons — so she can move between structured and fast-moving environments.</span></div>
-              <div class="card"><strong>Thinks about impact</strong><span>Her strongest work ties engineering to outcomes like lower manual effort, better visibility, safer AI behavior, or stronger user experience.</span></div>
-              <div class="card"><strong>Communicates clearly</strong><span>Teaching and presenting are a real advantage. She can explain technical ideas without losing the point.</span></div>
-            </div>
-            <div class="badge-row">
-              <span class="badge">Software Engineering</span>
-              <span class="badge">Enterprise Automation</span>
-              <span class="badge">AI Safety Research</span>
-              <span class="badge">Data & Analytics</span>
-              <span class="badge">Human-Centered Design</span>
-            </div>
-          </div>
-        `,
-        },
+
         experience: {
           prompt: "Show me her experience.",
           response: `
