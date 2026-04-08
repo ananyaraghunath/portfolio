@@ -504,6 +504,156 @@
         animation: fadeIn 260ms ease;
       }
 
+      .hero-visual {
+        display: grid;
+        grid-template-columns: 160px 1fr;
+        gap: 18px;
+        align-items: center;
+        margin: 22px auto 0;
+        max-width: 760px;
+        padding: 18px;
+        border: 1px solid var(--line);
+        border-radius: 26px;
+        background: linear-gradient(
+          180deg,
+          rgba(255, 255, 255, 0.045),
+          rgba(255, 255, 255, 0.02)
+        );
+        box-shadow: var(--shadow);
+      }
+
+      .profile-card {
+        position: relative;
+        min-height: 170px;
+        border-radius: 22px;
+        overflow: hidden;
+        border: 1px solid var(--line);
+        background: linear-gradient(
+          135deg,
+          rgba(112, 16, 163, 0.9),
+          rgba(71, 12, 122, 0.95)
+        );
+        display: flex;
+        align-items: flex-end;
+        padding: 16px;
+      }
+
+      .profile-orb {
+        position: absolute;
+        width: 150px;
+        height: 150px;
+        border-radius: 50%;
+        background: radial-gradient(
+          circle,
+          rgba(255, 255, 255, 0.28),
+          rgba(255, 255, 255, 0.02)
+        );
+        top: -30px;
+        right: -15px;
+        filter: blur(3px);
+      }
+
+      .profile-avatar {
+        width: 74px;
+        height: 74px;
+        border-radius: 22px;
+        display: grid;
+        place-items: center;
+        font-size: 1.8rem;
+        font-weight: 800;
+        background: rgba(255, 255, 255, 0.14);
+        border: 1px solid rgba(255, 255, 255, 0.18);
+        backdrop-filter: blur(10px);
+      }
+
+      .profile-meta {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+      }
+
+      .profile-meta h3 {
+        margin: 0;
+        font-size: 1.3rem;
+        letter-spacing: -0.03em;
+      }
+
+      .profile-meta p {
+        margin: 0;
+        color: #d7d7d7;
+      }
+
+      .logo-strip {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 12px;
+      }
+
+      .logo-card {
+        min-height: 78px;
+        border-radius: 18px;
+        border: 1px solid var(--line);
+        background: rgba(255, 255, 255, 0.03);
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        padding: 14px;
+      }
+
+      .logo-mark {
+        width: 46px;
+        height: 46px;
+        border-radius: 14px;
+        display: grid;
+        place-items: center;
+        font-weight: 800;
+        flex-shrink: 0;
+        color: white;
+        background: linear-gradient(135deg, #242424, #3a3a3a);
+        border: 1px solid rgba(255, 255, 255, 0.08);
+      }
+
+      .logo-card strong {
+        display: block;
+        margin-bottom: 3px;
+      }
+
+      .logo-card span {
+        color: var(--muted);
+        font-size: 0.9rem;
+      }
+
+      .typing-shell {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        padding: 7px 12px;
+        border-radius: 999px;
+        margin-top: 14px;
+        border: 1px solid rgba(255, 255, 255, 0.08);
+        background: rgba(255, 255, 255, 0.03);
+        color: #d9d9d9;
+        font-size: 0.95rem;
+      }
+
+      .typing-text {
+        min-width: 22ch;
+        white-space: nowrap;
+        overflow: hidden;
+      }
+
+      .cursor {
+        display: inline-block;
+        width: 0.6ch;
+        animation: blink 1s step-end infinite;
+      }
+
+      @keyframes blink {
+        50% {
+          opacity: 0;
+        }
+      }
+
       @keyframes fadeIn {
         from {
           opacity: 0;
@@ -535,7 +685,9 @@
 
       @media (max-width: 720px) {
         .grid,
-        .split {
+        .split,
+        .hero-visual,
+        .logo-strip {
           grid-template-columns: 1fr;
         }
         .message {
@@ -634,6 +786,56 @@
                 — all through a sleek, chat-style portfolio that feels modern
                 and easy to navigate.
               </p>
+              <div class="typing-shell">
+                <span>Now typing: </span>
+                <span class="typing-text" id="typingText"></span
+                ><span class="cursor">|</span>
+              </div>
+            </div>
+
+            <div class="hero-visual">
+              <div class="profile-card">
+                <div class="profile-orb"></div>
+                <div>
+                  <div class="profile-avatar">AR</div>
+                </div>
+              </div>
+              <div class="profile-meta">
+                <h3>Ananya Raghunath</h3>
+                <p>
+                  Computer Science student building polished products, practical
+                  automations, and applied AI systems.
+                </p>
+                <div class="logo-strip">
+                  <div class="logo-card">
+                    <div class="logo-mark">WF</div>
+                    <div>
+                      <strong>Wells Fargo</strong
+                      ><span>Software Engineering</span>
+                    </div>
+                  </div>
+                  <div class="logo-card">
+                    <div class="logo-mark">PG</div>
+                    <div>
+                      <strong>PSEG</strong><span>Enterprise automation</span>
+                    </div>
+                  </div>
+                  <div class="logo-card">
+                    <div class="logo-mark">AI</div>
+                    <div>
+                      <strong>AI4SocialGood</strong
+                      ><span>LLM safety research</span>
+                    </div>
+                  </div>
+                  <div class="logo-card">
+                    <div class="logo-mark">CN</div>
+                    <div>
+                      <strong>Code Ninjas</strong
+                      ><span>Teaching + mentorship</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
             </div>
 
             <div class="prompt-wrap">
@@ -674,6 +876,44 @@
       const chatView = document.getElementById("chatView");
       const homeView = document.getElementById("homeView");
       const navButtons = Array.from(document.querySelectorAll(".nav-btn"));
+      const typingText = document.getElementById("typingText");
+      const typingPrompts = [
+        "Summarize her in 30 seconds",
+        "Why is she a strong hire?",
+        "Show me her best projects",
+        "Where has she created impact?",
+      ];
+      let typingIndex = 0;
+      let charIndex = 0;
+      let isDeleting = false;
+
+      function runTyping() {
+        if (!typingText) return;
+        const current = typingPrompts[typingIndex];
+        typingText.textContent = current.slice(0, charIndex);
+
+        if (!isDeleting && charIndex < current.length) {
+          charIndex++;
+          setTimeout(runTyping, 55);
+          return;
+        }
+
+        if (!isDeleting && charIndex === current.length) {
+          isDeleting = true;
+          setTimeout(runTyping, 1200);
+          return;
+        }
+
+        if (isDeleting && charIndex > 0) {
+          charIndex--;
+          setTimeout(runTyping, 28);
+          return;
+        }
+
+        isDeleting = false;
+        typingIndex = (typingIndex + 1) % typingPrompts.length;
+        setTimeout(runTyping, 240);
+      }
 
       const pages = {
         tldr: {
@@ -729,19 +969,19 @@
             <h2>Experience</h2>
             <div class="grid">
               <div class="card">
-                <strong>Wells Fargo · Software Engineering Intern</strong>
+                <div style="display:flex;align-items:center;gap:10px;margin-bottom:8px;"><div class="logo-mark">WF</div><strong style="margin:0;">Wells Fargo · Software Engineering Intern</strong></div>
                 <span>Worked on enterprise application design, development, testing, integration, data modeling, and analytics environments.</span>
               </div>
               <div class="card">
-                <strong>PSEG · IT Disaster Recovery Governance Intern</strong>
+                <div style="display:flex;align-items:center;gap:10px;margin-bottom:8px;"><div class="logo-mark">PG</div><strong style="margin:0;">PSEG · IT Disaster Recovery Governance Intern</strong></div>
                 <span>Automated business continuity review workflows, built Power BI dashboards, and improved compliance tracking across 200+ systems.</span>
               </div>
               <div class="card">
-                <strong>AI4SocialGood Lab · Research Assistant</strong>
+                <div style="display:flex;align-items:center;gap:10px;margin-bottom:8px;"><div class="logo-mark">AI</div><strong style="margin:0;">AI4SocialGood Lab · Research Assistant</strong></div>
                 <span>Researched latent-space defenses against LLM jailbreak attacks and built lightweight classifiers on curated prompt data.</span>
               </div>
               <div class="card">
-                <strong>Code Ninjas · Lead Instructor</strong>
+                <div style="display:flex;align-items:center;gap:10px;margin-bottom:8px;"><div class="logo-mark">CN</div><strong style="margin:0;">Code Ninjas · Lead Instructor</strong></div>
                 <span>Taught coding to 100+ students and designed lesson plans across Python, JavaScript, C#, and Lua.</span>
               </div>
             </div>
@@ -864,6 +1104,8 @@
         homeView.className = "home fade-in";
         window.scrollTo({ top: 0, behavior: "smooth" });
       }
+
+      runTyping();
     </script>
   </body>
 </html>
