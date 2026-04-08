@@ -13,7 +13,7 @@
         --line: rgba(255, 255, 255, 0.08);
         --text: #ececec;
         --muted: #a3a3a3;
-        --green: #10a37f;
+        --green: #aa57d7;
         --green-soft: rgba(16, 163, 127, 0.12);
         --shadow: 0 20px 60px rgba(0, 0, 0, 0.35);
         --radius-xl: 24px;
@@ -101,7 +101,7 @@
         border-radius: 12px;
         display: grid;
         place-items: center;
-        background: linear-gradient(135deg, #10a37f, #0c7a5f);
+        background: linear-gradient(135deg, #6b10a3, #640c7a);
         color: white;
         font-weight: 800;
         box-shadow: 0 10px 20px rgba(16, 163, 127, 0.25);
@@ -265,7 +265,7 @@
         align-items: center;
         gap: 8px;
         background: var(--green-soft);
-        color: #7de2c8;
+        color: #c97de2;
         border: 1px solid rgba(16, 163, 127, 0.22);
         border-radius: 999px;
         padding: 8px 14px;
@@ -389,7 +389,7 @@
         background: #303030;
       }
       .avatar.ai {
-        background: linear-gradient(135deg, #10a37f, #0c7a5f);
+        background: linear-gradient(135deg, #7010a3, #470c7a);
       }
 
       .bubble {
@@ -464,7 +464,7 @@
         padding: 8px 12px;
         border-radius: 999px;
         background: rgba(16, 163, 127, 0.1);
-        color: #85e6cd;
+        color: #9a85e6;
         border: 1px solid rgba(16, 163, 127, 0.18);
         font-size: 0.88rem;
         font-weight: 600;
@@ -573,7 +573,7 @@
             Overview
           </button>
           <button class="nav-btn" data-page="tldr" onclick="loadPage('tldr')">
-            TL;DR for hiring managers
+            TL;DR
           </button>
           <button class="nav-btn" data-page="about" onclick="loadPage('about')">
             About Ananya
@@ -610,24 +610,15 @@
             Contact
           </button>
         </div>
-
-        <div class="sidebar-footer">
-          Built as a clean, ChatGPT-inspired personal site: minimal, readable,
-          and easy to scan fast.
-        </div>
       </aside>
 
       <main class="main">
         <div class="topbar">
           <div>
             <div class="topbar-title">AnanyaGPT</div>
-            <div class="topbar-sub">
-              A recruiter-friendly website styled like a polished AI chat
-              interface.
-            </div>
+            <div class="topbar-sub"></div>
           </div>
           <div class="topbar-actions">
-            <button class="ghost" onclick="loadPage('tldr')">TL;DR</button>
             <button class="cta" onclick="loadPage('contact')">Contact</button>
           </div>
         </div>
@@ -638,7 +629,7 @@
               <div class="eyebrow">
                 Open to software engineering, AI, and enterprise tech roles
               </div>
-              <h1>What would you like to know about Ananya?</h1>
+              <h1>What about Ananya?</h1>
               <p class="subcopy">
                 Explore her experience in software engineering, AI safety
                 research, workflow automation, product development, and teaching
